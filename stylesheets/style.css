@@ -1,0 +1,58 @@
+body {
+    color: #404040;
+    font-family: sans-serif;
+    margin: 0 auto 3em;
+    max-width: 45em;
+}
+h1 {
+    font-family: 'Gill Sans', sans-serif;
+    font-weight: normal;
+    font-size: 3em;
+    text-transform: uppercase;
+}
+a {
+    color: #CC0101;
+    text-decoration: none;
+}
+a:focus,
+a:hover {
+    text-decoration: underline;
+}
+.inline-list {
+    list-style: none;
+    margin-left: 0;
+    padding-left: 0;
+}
+.inline-list li {
+    display: inline-block;
+    margin-right: 1em;
+}
+.quiet {
+    color: #808080;
+}
+label {
+    font-weight: bold;
+    display: block;
+    cursor: pointer;
+}
+input {
+    font-family: sans-serif;
+}
+textarea {
+    font-family: monaco, monospace;
+    color: #404040;
+}
+fieldset {
+    border: 1px solid #ddd;
+    margin-bottom: 1em;
+}
+.text {
+    border: 1px solid #999;
+    padding: .5em;
+    font-size: 100%;
+    width: 100%;
+    box-sizing: border-box;
+}
+hr {
+    border: 2px solid #ddd;
+}
