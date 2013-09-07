@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="generator">
+<head>
+    <meta charset="UTF-8">
+    <title>Imager.js Customizer</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+    <!-- Main Content Section -->
+    <div class="row">
+        <div class="large-12 columns">
+            <h1>Imager.js Customizer</h1>
+        </div>
+    </div>
+    <div ng-controller="GeneratorCtrl">
+        <div class="row">
+            <div class="large-12 columns">
+                <p><a class="button small" href="https://github.com/oncletom/Imager.js/blob/feature-separation/src/imager.js">Download Imager.js</a></p>
+                <h2><label for="generated-code">Your Imager.js configuration</label></h2>
+<textarea name="generated-code" cols="30" rows="14" id="generated-code" select-on-click readonly="readonly">
+<script src="{{ scriptPath }}"></script>
+
+<script>
+    var images = document.querySelectorAll('{{ selector }}');
+    var options = {
+        availableWidths: [ {{ availableWidths }} ],
+        strategy: '{{ strategy }}',
+        replacementDelay: {{ replacementDelay | number }}
+    }
+
+    Imager.init(images, options);
+</script>
+
+<div class="delayed-image-load" data-src="{{ path }}"></div></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="columns">
+                <form ng-submit="generate()">
+                    <fieldset>
+                        <div class="row">
+                            <div class="large-6 columns">
+                                <label for="o-availableWidths">Image sizes</label>
+                                <input type="text" id="o-availableWidths" name="availableWidths" value="320, 480, 768, 1024" ng-model="availableWidths">
+
+                                <label for="o-selector">Selector <span>(any CSS selector)</span></label>
+                                <input type="text" id="o-selector" name="selector" value=".delayed-image-load" ng-model="selector">
+
+                                <label for="o-path">Path pattern</label>
+                                <input type="text" id="o-path" name="path" ng-model="path">
+
+                                <label for="o-script-path">Path to script</label>
+                                <input type="text" id="o-script-path" name="script-path" ng-model="scriptPath">
+                            </div>
+                            <div class="large-6 columns">
+                                <fieldset>
+                                    <legend>Strategy</legend>
+                                    <label for="o-strategy-replacer"><input type="radio" name="strategy" value="replacer" id="o-strategy-replacer" ng-model="strategy"> Replace placeholder with image</label>
+                                    <label for="o-strategy-container"><input type="radio" name="strategy" value="container" id="o-strategy-container" ng-model="strategy"> Insert image in placeholder</label>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="columns">
+                                <fieldset>
+                                    <legend>Advanced options</legend>
+                                    <label for="o-replacement-delay">Replacement delay</label>
+                                    <input type="text" id="o-replacement-delay" name="replacement-delay" ng-model="replacementDelay">
+                                </fieldset>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="large-12 columns">
+            <div class="panel">
+                <h2>Contribute</h2>
+                <div class="row">
+                    <div class="columns">
+                        <p>Help making this tool better.</p>
+                        <a href="#" class="button">Contribute on Github</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="row">
+        <div class="large-12 columns">
+            <hr>
+            <div class="row">
+                <div class="large-6 columns">
+                    <p>Drunk coded by <a href="https://twitter.com/kaelig">@Kaelig</a>. Thanks to <a href="https://twitter.com/oncletom">@oncletom</a> for his help and BBC News for their great responsive images tool (♥ Tom).</p>
+                </div>
+                <div class="large-6 columns">
+                    <ul class="inline-list right">
+                        <li><a href="http://responsivenews.co.uk/post/58244240772/imager-js">BBC Responsive News article</a></li>
+                        <li><a href="https://github.com/BBC-News/Imager.js">Imager.js Github project</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Takana Script Tag. data-project must be the name of the project folder -->
+    <script data-project="imager-generator" src="http://localhost:48626/javascripts/edge.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+    <script src="js/generator.js"></script>
+</body>
+</html>
