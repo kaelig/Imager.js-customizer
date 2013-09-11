@@ -15,8 +15,9 @@
         <h2><label for="generated-code">Your Imager.js configuration</label></h2>
 
 <textarea class="text" name="generated-code" cols="30" rows="15" id="generated-code" select-on-click readonly="readonly">
-<script src="{{ scriptPath }}"></script>
+<div class="delayed-image-load" data-src="{{ path }}"></div>
 
+<script src="{{ scriptPath }}"></script>
 <script>
     var images = document.querySelectorAll('{{ selector }}');
     var options = {
@@ -27,26 +28,26 @@
 
     Imager.init(images, options);
 </script>
-
-<div class="delayed-image-load"
-     data-src="{{ path }}"></div></textarea>
+</textarea>
 
         <form ng-submit="generate()">
             <fieldset>
                 <p>
-                    <label for="o-availableWidths">Image sizes</label>
+                    <label for="o-availableWidths">Image Breakpoints</label>
+                    You can generate them with <a href="https://github.com/andismith/"><code>grunt-responsive-images</code></a> for example.
                     <input class="text" type="text" id="o-availableWidths" name="availableWidths" value="320, 480, 768, 1024" ng-model="availableWidths">
                 </p>
                 <p>
-                    <label for="o-selector">Selector <span>(any CSS selector)</span></label>
+                    <label for="o-selector">Responsive Placeholder CSS Selector</label>
                     <input class="text" type="text" id="o-selector" name="selector" value=".delayed-image-load" ng-model="selector">
                 </p>
                 <p>
-                    <label for="o-path">Path pattern</label>
+                    <label for="o-path">Responsive Image Source</label>
+                    Imager.js will replace <code>{width}</code> by the best matching value from the <em>Image Breakpoints</em> field.
                     <input class="text" type="text" id="o-path" name="path" ng-model="path">
                 </p>
                 <p>
-                    <label for="o-script-path">Path to script</label>
+                    <label for="o-script-path">Imager.js File Location</label>
                     <input class="text" type="text" id="o-script-path" name="script-path" ng-model="scriptPath">
                 </p>
 
