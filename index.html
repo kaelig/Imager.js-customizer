@@ -15,8 +15,9 @@
         <h2><label for="generated-code">Your Imager.js configuration</label></h2>
 
 <textarea class="text" name="generated-code" cols="30" rows="15" id="generated-code" select-on-click readonly="readonly">
-<script src="{{ scriptPath }}"></script>
+<div class="delayed-image-load" data-src="{{ path }}"></div>
 
+<script src="{{ scriptPath }}"></script>
 <script>
     var images = document.querySelectorAll('{{ selector }}');
     var options = {
@@ -27,9 +28,7 @@
 
     Imager.init(images, options);
 </script>
-
-<div class="delayed-image-load"
-     data-src="{{ path }}"></div></textarea>
+</textarea>
 
         <form ng-submit="generate()">
             <fieldset>
